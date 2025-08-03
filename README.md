@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Marine Corps Unit Readiness Dashboard
 
 A comprehensive web-based dashboard designed for Marine Corps units to track and display unit readiness status, personnel information, weapons training, equipment status, and training records. This dashboard provides commanding officers with real-time visual updates on unit readiness and status.
@@ -188,3 +189,7 @@ This dashboard is designed for official Marine Corps use. All styling and brandi
 
 *United States Marine Corps Unit Readiness Dashboard*
 *Version 1.0 - 2024* 
+=======
+# MASS-3-Unit-Status-Readiness-Tool
+This is a website for MASS-3 to give quick and simple updates on the unit status 
+>>>>>>> b931a6d6930c2e7a6fa6e35841580e4832039242
