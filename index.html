@@ -1,0 +1,1493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MASS-3 Unit Status & Readiness Tool - BLACKLIST</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo-section">
+                <div class="usmc-logo">
+                    <img src="ega-logo-3.png" alt="USMC Eagle, Globe, and Anchor" width="80" height="80" class="eagle-globe-anchor">
+                </div>
+                <div class="header-text">
+                    <h1>MASS-3 UNIT STATUS & READINESS TOOL</h1>
+                    <p class="callsign">BLACKLIST</p>
+                </div>
+            </div>
+            <div class="header-controls">
+                <div class="date-time">
+                    <span id="current-date"></span>
+                    <span id="current-time"></span>
+                </div>
+                <button class="btn btn-primary" id="briefing-mode">
+                    <i class="fas fa-presentation"></i>
+                    Briefing Mode
+                </button>
+                <button class="btn btn-secondary" id="upload-data">
+                    <i class="fas fa-upload"></i>
+                    Upload Data
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <ul class="nav-list">
+            <li><a href="#overview" class="nav-link active" data-tab="overview">Commanders Overview</a></li>
+            <li><a href="#personnel" class="nav-link" data-tab="personnel">Personnel</a></li>
+            <li><a href="#training" class="nav-link" data-tab="training">Training</a></li>
+            <li><a href="#teep" class="nav-link" data-tab="teep">TEEP</a></li>
+            <li><a href="#equipment" class="nav-link" data-tab="equipment">Equipment</a></li>
+            <li><a href="#admin" class="nav-link" data-tab="admin">Admin</a></li>
+            <li><a href="#analytics" class="nav-link" data-tab="analytics">Analytics</a></li>
+            <li><a href="#marine-systems" class="nav-link" data-tab="marine-systems">Marine Systems</a></li>
+            <li><a href="#data-entry" class="nav-link" data-tab="data-entry">Data Entry</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Commanders Overview -->
+        <section id="overview" class="content-section active">
+            <div class="overview-grid">
+                <!-- Fitness Overview -->
+                <div class="overview-card fitness-overview">
+                    <h3>Fitness Status</h3>
+                    <div class="fitness-stats">
+                        <div class="fitness-item">
+                            <div class="fitness-label">PFT Complete</div>
+                            <div class="fitness-value" data-field="pft-complete">87%</div>
+                            <div class="fitness-avg" data-field="pft-avg">Unit Avg: 285</div>
+                        </div>
+                        <div class="fitness-item">
+                            <div class="fitness-label">CFT Complete</div>
+                            <div class="fitness-value" data-field="cft-complete">92%</div>
+                            <div class="fitness-avg" data-field="cft-avg">Unit Avg: 298</div>
+                        </div>
+                        <div class="fitness-item">
+                            <div class="fitness-label">BCP</div>
+                            <div class="fitness-value" data-field="bcp">15</div>
+                            <div class="fitness-avg">Marines</div>
+                        </div>
+                        <div class="fitness-item">
+                            <div class="fitness-label">RCP</div>
+                            <div class="fitness-value" data-field="rcp">7</div>
+                            <div class="fitness-avg">Marines</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Personnel Overview -->
+                <div class="overview-card personnel-overview">
+                    <h3>Personnel Status</h3>
+                    <div class="personnel-stats">
+                        <div class="personnel-item">
+                            <div class="personnel-label">Total Personnel</div>
+                            <div class="personnel-value" data-field="total-personnel">1,247</div>
+                        </div>
+                        <div class="personnel-breakdown">
+                            <div class="breakdown-item">
+                                <span class="breakdown-label">On-Hand</span>
+                                <span class="breakdown-value" data-field="on-hand">1,089</span>
+                            </div>
+                            <div class="breakdown-item">
+                                <span class="breakdown-label">Deployed</span>
+                                <span class="breakdown-value" data-field="deployed">98</span>
+                            </div>
+                            <div class="breakdown-item">
+                                <span class="breakdown-label">Limited Duty</span>
+                                <span class="breakdown-value" data-field="limited-duty">32</span>
+                            </div>
+                            <div class="breakdown-item">
+                                <span class="breakdown-label">Light Duty</span>
+                                <span class="breakdown-value" data-field="light-duty">18</span>
+                            </div>
+                            <div class="breakdown-item">
+                                <span class="breakdown-label">Pregnant</span>
+                                <span class="breakdown-value" data-field="pregnant">8</span>
+                            </div>
+                            <div class="breakdown-item">
+                                <span class="breakdown-label">Legal</span>
+                                <span class="breakdown-value" data-field="legal">2</span>
+                            </div>
+                            <div class="breakdown-item">
+                                <span class="breakdown-label">BCP</span>
+                                <span class="breakdown-value">15</span>
+                            </div>
+                            <div class="breakdown-item">
+                                <span class="breakdown-label">RCP</span>
+                                <span class="breakdown-value">7</span>
+                            </div>
+                            <div class="breakdown-item">
+                                <span class="breakdown-label">TAD < 30 Days</span>
+                                <span class="breakdown-value" data-field="tad-less-30">12</span>
+                            </div>
+                            <div class="breakdown-item">
+                                <span class="breakdown-label">TAD > 30 Days</span>
+                                <span class="breakdown-value" data-field="tad-greater-30">8</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <!-- TEEP White Space -->
+                <div class="overview-card teep-overview">
+                    <h3>TEEP White Space</h3>
+                    <div class="teep-windows">
+                        <div class="window-item">
+                            <div class="window-dates">15 JAN - 28 JAN</div>
+                            <div class="window-days">14 days</div>
+                            <div class="window-status available">Available</div>
+                        </div>
+                        <div class="window-item">
+                            <div class="window-dates">12 FEB - 25 FEB</div>
+                            <div class="window-days">14 days</div>
+                            <div class="window-status available">Available</div>
+                        </div>
+                        <div class="window-item">
+                            <div class="window-dates">15 MAR - 05 APR</div>
+                            <div class="window-days">22 days</div>
+                            <div class="window-status available">Available</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Equipment Status -->
+                <div class="overview-card equipment-overview">
+                    <h3>Equipment Status</h3>
+                    <div class="equipment-overview-stats">
+                        <div class="equipment-overview-item">
+                            <div class="equipment-overview-label">Overall Readiness</div>
+                            <div class="equipment-overview-value" data-field="equipment-readiness">89.5%</div>
+                            <div class="equipment-overview-detail">Operational Rate</div>
+                        </div>
+                        <div class="equipment-breakdown">
+                            <div class="equipment-breakdown-item">
+                                <span class="equipment-breakdown-label">Radar Systems</span>
+                                <span class="equipment-breakdown-value">100%</span>
+                            </div>
+                            <div class="equipment-breakdown-item">
+                                <span class="equipment-breakdown-label">Communication</span>
+                                <span class="equipment-breakdown-value">92%</span>
+                            </div>
+                            <div class="equipment-breakdown-item">
+                                <span class="equipment-breakdown-label">Vehicles</span>
+                                <span class="equipment-breakdown-value">85%</span>
+                            </div>
+                            <div class="equipment-breakdown-item">
+                                <span class="equipment-breakdown-label">Maintenance Due</span>
+                                <span class="equipment-breakdown-value">3</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Advanced Analytics -->
+                <div class="overview-card analytics-overview">
+                    <h3>Advanced Analytics</h3>
+                    <div class="analytics-overview-stats">
+                        <div class="analytics-overview-item">
+                            <div class="analytics-overview-label">Deployment Readiness</div>
+                            <div class="analytics-overview-value" data-field="deployment-readiness">94.2%</div>
+                            <div class="analytics-overview-detail">Combat Ready</div>
+                        </div>
+                        <div class="analytics-breakdown">
+                            <div class="analytics-breakdown-item">
+                                <span class="analytics-breakdown-label">Personnel</span>
+                                <span class="analytics-breakdown-value">87.4%</span>
+                            </div>
+                            <div class="analytics-breakdown-item">
+                                <span class="analytics-breakdown-label">Equipment</span>
+                                <span class="analytics-breakdown-value">89.5%</span>
+                            </div>
+                            <div class="analytics-breakdown-item">
+                                <span class="analytics-breakdown-label">Training</span>
+                                <span class="analytics-breakdown-value">82.3%</span>
+                            </div>
+                            <div class="analytics-breakdown-item">
+                                <span class="analytics-breakdown-label">Next Assessment</span>
+                                <span class="analytics-breakdown-value">15 FEB</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Personnel Section -->
+        <section id="personnel" class="content-section">
+            <div class="section-header">
+                <h2>Personnel Management</h2>
+            </div>
+            <div class="company-grid">
+                <div class="company-card">
+                    <h3>H&HS Company</h3>
+                    <div class="company-stats">
+                        <div class="stat-item">
+                            <span class="stat-label">Total</span>
+                            <span class="stat-value">312</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">On-Hand</span>
+                            <span class="stat-value">289</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Deployed</span>
+                            <span class="stat-value">15</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Limited Duty</span>
+                            <span class="stat-value">5</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Light Duty</span>
+                            <span class="stat-value">3</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">TAD < 30 Days</span>
+                            <span class="stat-value" data-field="tad-less-30">4</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">TAD > 30 Days</span>
+                            <span class="stat-value" data-field="tad-greater-30">2</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="company-card">
+                    <h3>Alpha Company</h3>
+                    <div class="company-stats">
+                        <div class="stat-item">
+                            <span class="stat-label">Total</span>
+                            <span class="stat-value">298</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">On-Hand</span>
+                            <span class="stat-value">265</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Deployed</span>
+                            <span class="stat-value">22</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Limited Duty</span>
+                            <span class="stat-value">8</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Light Duty</span>
+                            <span class="stat-value">3</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">TAD < 30 Days</span>
+                            <span class="stat-value" data-field="tad-less-30">3</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">TAD > 30 Days</span>
+                            <span class="stat-value" data-field="tad-greater-30">1</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="company-card">
+                    <h3>Bravo Company</h3>
+                    <div class="company-stats">
+                        <div class="stat-item">
+                            <span class="stat-label">Total</span>
+                            <span class="stat-value">305</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">On-Hand</span>
+                            <span class="stat-value">272</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Deployed</span>
+                            <span class="stat-value">25</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Limited Duty</span>
+                            <span class="stat-value">6</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Light Duty</span>
+                            <span class="stat-value">2</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">TAD < 30 Days</span>
+                            <span class="stat-value" data-field="tad-less-30">2</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">TAD > 30 Days</span>
+                            <span class="stat-value" data-field="tad-greater-30">3</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="company-card">
+                    <h3>Charlie Company</h3>
+                    <div class="company-stats">
+                        <div class="stat-item">
+                            <span class="stat-label">Total</span>
+                            <span class="stat-value">332</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">On-Hand</span>
+                            <span class="stat-value">303</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Deployed</span>
+                            <span class="stat-value">21</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Limited Duty</span>
+                            <span class="stat-value">5</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Light Duty</span>
+                            <span class="stat-value">3</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">TAD < 30 Days</span>
+                            <span class="stat-value" data-field="tad-less-30">3</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">TAD > 30 Days</span>
+                            <span class="stat-value" data-field="tad-greater-30">2</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Training Section -->
+        <section id="training" class="content-section">
+            <div class="section-header">
+                <h2>Training Status</h2>
+            </div>
+            <div class="company-grid">
+                <div class="company-card">
+                    <h3>H&HS Company</h3>
+                    <div class="training-stats">
+                        <div class="training-item">
+                            <span class="training-label">PFT Complete</span>
+                            <span class="training-value">89%</span>
+                            <span class="training-avg">Avg: 287</span>
+                        </div>
+                        <div class="training-item">
+                            <span class="training-label">CFT Complete</span>
+                            <span class="training-value">94%</span>
+                            <span class="training-avg">Avg: 295</span>
+                        </div>
+                        <div class="training-item">
+                            <span class="training-label">BCP</span>
+                            <span class="training-value">3</span>
+                            <span class="training-avg">Marines</span>
+                        </div>
+                        <div class="training-item">
+                            <span class="training-label">RCP</span>
+                            <span class="training-value">1</span>
+                            <span class="training-avg">Marines</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="company-card">
+                    <h3>Alpha Company</h3>
+                    <div class="training-stats">
+                        <div class="training-item">
+                            <span class="training-label">PFT Complete</span>
+                            <span class="training-value">85%</span>
+                            <span class="training-avg">Avg: 283</span>
+                        </div>
+                        <div class="training-item">
+                            <span class="training-label">CFT Complete</span>
+                            <span class="training-value">91%</span>
+                            <span class="training-avg">Avg: 291</span>
+                        </div>
+                        <div class="training-item">
+                            <span class="training-label">BCP</span>
+                            <span class="training-value">5</span>
+                            <span class="training-avg">Marines</span>
+                        </div>
+                        <div class="training-item">
+                            <span class="training-label">RCP</span>
+                            <span class="training-value">2</span>
+                            <span class="training-avg">Marines</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="company-card">
+                    <h3>Bravo Company</h3>
+                    <div class="training-stats">
+                        <div class="training-item">
+                            <span class="training-label">PFT Complete</span>
+                            <span class="training-value">88%</span>
+                            <span class="training-avg">Avg: 286</span>
+                        </div>
+                        <div class="training-item">
+                            <span class="training-label">CFT Complete</span>
+                            <span class="training-value">93%</span>
+                            <span class="training-avg">Avg: 297</span>
+                        </div>
+                        <div class="training-item">
+                            <span class="training-label">BCP</span>
+                            <span class="training-value">3</span>
+                            <span class="training-avg">Marines</span>
+                        </div>
+                        <div class="training-item">
+                            <span class="training-label">RCP</span>
+                            <span class="training-value">2</span>
+                            <span class="training-avg">Marines</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="company-card">
+                    <h3>Charlie Company</h3>
+                    <div class="training-stats">
+                        <div class="training-item">
+                            <span class="training-label">PFT Complete</span>
+                            <span class="training-value">86%</span>
+                            <span class="training-avg">Avg: 284</span>
+                        </div>
+                        <div class="training-item">
+                            <span class="training-label">CFT Complete</span>
+                            <span class="training-value">90%</span>
+                            <span class="training-avg">Avg: 293</span>
+                        </div>
+                        <div class="training-item">
+                            <span class="training-label">BCP</span>
+                            <span class="training-value">4</span>
+                            <span class="training-avg">Marines</span>
+                        </div>
+                        <div class="training-item">
+                            <span class="training-label">RCP</span>
+                            <span class="training-value">2</span>
+                            <span class="training-avg">Marines</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TEEP Section -->
+        <section id="teep" class="content-section">
+            <div class="section-header">
+                <h2>Training & Exercise Execution Plan</h2>
+            </div>
+            <div class="company-grid">
+                <div class="company-card">
+                    <h3>H&HS Company</h3>
+                    <div class="teep-stats">
+                        <div class="teep-window">
+                            <div class="window-header">
+                                <span class="window-dates">15 JAN - 28 JAN</span>
+                                <span class="window-status available">Available</span>
+                            </div>
+                            <div class="window-exercises">
+                                <div class="exercise-item">Range Qualification</div>
+                                <div class="exercise-item">Field Training Exercise</div>
+                            </div>
+                        </div>
+                        <div class="teep-window">
+                            <div class="window-header">
+                                <span class="window-dates">12 FEB - 25 FEB</span>
+                                <span class="window-status occupied">Occupied</span>
+                            </div>
+                            <div class="window-exercises">
+                                <div class="exercise-item">Deployment Prep</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="company-card">
+                    <h3>Alpha Company</h3>
+                    <div class="teep-stats">
+                        <div class="teep-window">
+                            <div class="window-header">
+                                <span class="window-dates">15 JAN - 28 JAN</span>
+                                <span class="window-status available">Available</span>
+                            </div>
+                            <div class="window-exercises">
+                                <div class="exercise-item">Combat Training</div>
+                                <div class="exercise-item">Live Fire Exercise</div>
+                            </div>
+                        </div>
+                        <div class="teep-window">
+                            <div class="window-header">
+                                <span class="window-dates">15 MAR - 05 APR</span>
+                                <span class="window-status available">Available</span>
+                            </div>
+                            <div class="window-exercises">
+                                <div class="exercise-item">Advanced Training</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="company-card">
+                    <h3>Bravo Company</h3>
+                    <div class="teep-stats">
+                        <div class="teep-window">
+                            <div class="window-header">
+                                <span class="window-dates">12 FEB - 25 FEB</span>
+                                <span class="window-status available">Available</span>
+                            </div>
+                            <div class="window-exercises">
+                                <div class="exercise-item">Specialized Training</div>
+                            </div>
+                        </div>
+                        <div class="teep-window">
+                            <div class="window-header">
+                                <span class="window-dates">20 APR - 03 MAY</span>
+                                <span class="window-status occupied">Occupied</span>
+                            </div>
+                            <div class="window-exercises">
+                                <div class="exercise-item">Deployment Training</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="company-card">
+                    <h3>Charlie Company</h3>
+                    <div class="teep-stats">
+                        <div class="teep-window">
+                            <div class="window-header">
+                                <span class="window-dates">15 JAN - 28 JAN</span>
+                                <span class="window-status available">Available</span>
+                            </div>
+                            <div class="window-exercises">
+                                <div class="exercise-item">Basic Training</div>
+                            </div>
+                        </div>
+                        <div class="teep-window">
+                            <div class="window-header">
+                                <span class="window-dates">18 MAY - 31 MAY</span>
+                                <span class="window-status available">Available</span>
+                            </div>
+                            <div class="window-exercises">
+                                <div class="exercise-item">Advanced Combat</div>
+                                <div class="exercise-item">Field Exercise</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- White Space Overview -->
+            <div class="white-space-overview">
+                <h3>Available White Space</h3>
+                <div class="white-space-stats">
+                    <div class="white-space-stat">
+                        <span class="stat-label">Total Available Windows</span>
+                        <span class="stat-value" id="total-windows">3</span>
+                    </div>
+                    <div class="white-space-stat">
+                        <span class="stat-label">Total Available Days</span>
+                        <span class="stat-value" id="total-days">50</span>
+                    </div>
+                    <div class="white-space-stat">
+                        <span class="stat-label">Next Available Window</span>
+                        <span class="stat-value" id="next-window">15 JAN - 28 JAN</span>
+                    </div>
+                    <div class="white-space-stat">
+                        <span class="stat-label">Days Until Next Window</span>
+                        <span class="stat-value" id="days-until">12</span>
+                    </div>
+                </div>
+                <div class="white-space-timeline">
+                    <h4>Available Training Windows</h4>
+                    <div class="window-list">
+                        <div class="window-item available">
+                            <span class="window-dates">15 JAN - 28 JAN</span>
+                            <span class="window-days">14 days</span>
+                            <span class="window-status">Available</span>
+                        </div>
+                        <div class="window-item available">
+                            <span class="window-dates">12 FEB - 25 FEB</span>
+                            <span class="window-days">14 days</span>
+                            <span class="window-status">Available</span>
+                        </div>
+                        <div class="window-item available">
+                            <span class="window-dates">15 MAR - 05 APR</span>
+                            <span class="window-days">22 days</span>
+                            <span class="window-status">Available</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Upcoming Exercises Overview -->
+            <div class="upcoming-exercises">
+                <h3>Upcoming Exercises</h3>
+                <div class="exercises-timeline">
+                    <div class="exercise-event">
+                        <div class="exercise-date">
+                            <span class="month">JAN</span>
+                            <span class="day">15-28</span>
+                        </div>
+                        <div class="exercise-details">
+                            <h4>Range Qualification Exercise</h4>
+                            <p>H&HS Company • Live • Local</p>
+                            <div class="exercise-leadership">
+                                <span class="oic">OIC: Capt Smith</span>
+                                <span class="sncoic">SNCOIC: GySgt Johnson</span>
+                            </div>
+                            <div class="exercise-personnel">
+                                <span class="personnel-breakdown">MO: 3 | ME: 45 | NO: 2 | NE: 12 | Other: 5</span>
+                            </div>
+                            <span class="exercise-status in-planning">In-Planning</span>
+                        </div>
+                    </div>
+                    <div class="exercise-event">
+                        <div class="exercise-date">
+                            <span class="month">FEB</span>
+                            <span class="day">12-25</span>
+                        </div>
+                        <div class="exercise-details">
+                            <h4>Deployment Preparation</h4>
+                            <p>H&HS Company • Simulation • CONUS</p>
+                            <div class="exercise-leadership">
+                                <span class="oic">OIC: Maj Davis</span>
+                                <span class="sncoic">SNCOIC: MSgt Wilson</span>
+                            </div>
+                            <div class="exercise-personnel">
+                                <span class="personnel-breakdown">MO: 5 | ME: 38 | NO: 1 | NE: 8 | Other: 3</span>
+                            </div>
+                            <span class="exercise-status thirty-days-out">30-Days Out</span>
+                        </div>
+                    </div>
+                    <div class="exercise-event">
+                        <div class="exercise-date">
+                            <span class="month">MAR</span>
+                            <span class="day">15-05</span>
+                        </div>
+                        <div class="exercise-details">
+                            <h4>Advanced Combat Training</h4>
+                            <p>Alpha Company • Live • Local</p>
+                            <div class="exercise-leadership">
+                                <span class="oic">OIC: Capt Brown</span>
+                                <span class="sncoic">SNCOIC: SSgt Martinez</span>
+                            </div>
+                            <div class="exercise-personnel">
+                                <span class="personnel-breakdown">MO: 4 | ME: 52 | NO: 3 | NE: 15 | Other: 2</span>
+                            </div>
+                            <span class="exercise-status in-execution">In-Execution</span>
+                        </div>
+                    </div>
+                    <div class="exercise-event">
+                        <div class="exercise-date">
+                            <span class="month">APR</span>
+                            <span class="day">20-03</span>
+                        </div>
+                        <div class="exercise-details">
+                            <h4>Deployment Training Exercise</h4>
+                            <p>Bravo Company • Simulation • OCONUS</p>
+                            <div class="exercise-leadership">
+                                <span class="oic">OIC: LtCol Anderson</span>
+                                <span class="sncoic">SNCOIC: MGySgt Taylor</span>
+                            </div>
+                            <div class="exercise-personnel">
+                                <span class="personnel-breakdown">MO: 6 | ME: 42 | NO: 2 | NE: 10 | Other: 4</span>
+                            </div>
+                            <span class="exercise-status in-planning">In-Planning</span>
+                        </div>
+                    </div>
+                    <div class="exercise-event">
+                        <div class="exercise-date">
+                            <span class="month">MAY</span>
+                            <span class="day">18-31</span>
+                        </div>
+                        <div class="exercise-details">
+                            <h4>Advanced Combat Simulation</h4>
+                            <p>Charlie Company • Live • CONUS</p>
+                            <div class="exercise-leadership">
+                                <span class="oic">OIC: Capt Garcia</span>
+                                <span class="sncoic">SNCOIC: GySgt Rodriguez</span>
+                            </div>
+                            <div class="exercise-personnel">
+                                <span class="personnel-breakdown">MO: 3 | ME: 48 | NO: 1 | NE: 11 | Other: 3</span>
+                            </div>
+                            <span class="exercise-status thirty-days-out">30-Days Out</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Equipment Section -->
+        <section id="equipment" class="content-section">
+            <div class="section-header">
+                <h2>Equipment & Maintenance Status</h2>
+            </div>
+            <div class="company-grid">
+                <div class="company-card">
+                    <h3>H&HS Company</h3>
+                    <div class="equipment-stats">
+                        <div class="equipment-category">
+                            <h4>Radar Systems</h4>
+                            <div class="equipment-item">
+                                <span class="equipment-name">Radar</span>
+                                <span class="equipment-status operational">Operational</span>
+                                <span class="equipment-count">2/2</span>
+                            </div>
+                        </div>
+                        <div class="equipment-category">
+                            <h4>Communication Systems</h4>
+                            <div class="equipment-item">
+                                <span class="equipment-name">CAC2S</span>
+                                <span class="equipment-status operational">Operational</span>
+                                <span class="equipment-count">3/3</span>
+                            </div>
+                            <div class="equipment-item">
+                                <span class="equipment-name">MRQ</span>
+                                <span class="equipment-status operational">Operational</span>
+                                <span class="equipment-count">2/2</span>
+                            </div>
+                        </div>
+                        <div class="equipment-category">
+                            <h4>Vehicles</h4>
+                            <div class="equipment-item">
+                                <span class="equipment-name">JLTV</span>
+                                <span class="equipment-status maintenance">Maintenance</span>
+                                <span class="equipment-count">4/5</span>
+                            </div>
+                            <div class="equipment-item">
+                                <span class="equipment-name">MVTR</span>
+                                <span class="equipment-status operational">Operational</span>
+                                <span class="equipment-count">3/3</span>
+                            </div>
+                            <div class="equipment-item">
+                                <span class="equipment-name">HMMWV</span>
+                                <span class="equipment-status operational">Operational</span>
+                                <span class="equipment-count">6/6</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="company-card">
+                    <h3>Alpha Company</h3>
+                    <div class="equipment-stats">
+                        <div class="equipment-category">
+                            <h4>Communication Systems</h4>
+                            <div class="equipment-item">
+                                <span class="equipment-name">CAC2S</span>
+                                <span class="equipment-status operational">Operational</span>
+                                <span class="equipment-count">2/2</span>
+                            </div>
+                            <div class="equipment-item">
+                                <span class="equipment-name">MRQ</span>
+                                <span class="equipment-status operational">Operational</span>
+                                <span class="equipment-count">1/1</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="company-card">
+                    <h3>Bravo Company</h3>
+                    <div class="equipment-stats">
+                        <div class="equipment-category">
+                            <h4>Communication Systems</h4>
+                            <div class="equipment-item">
+                                <span class="equipment-name">CAC2S</span>
+                                <span class="equipment-status operational">Operational</span>
+                                <span class="equipment-count">2/2</span>
+                            </div>
+                            <div class="equipment-item">
+                                <span class="equipment-name">MRQ</span>
+                                <span class="equipment-status maintenance">Maintenance</span>
+                                <span class="equipment-count">1/2</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="company-card">
+                    <h3>Charlie Company</h3>
+                    <div class="equipment-stats">
+                        <div class="equipment-category">
+                            <h4>Communication Systems</h4>
+                            <div class="equipment-item">
+                                <span class="equipment-name">CAC2S</span>
+                                <span class="equipment-status operational">Operational</span>
+                                <span class="equipment-count">2/2</span>
+                            </div>
+                            <div class="equipment-item">
+                                <span class="equipment-name">MRQ</span>
+                                <span class="equipment-status operational">Operational</span>
+                                <span class="equipment-count">1/1</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Admin Section -->
+        <section id="admin" class="content-section">
+            <div class="section-header">
+                <h2>Administrative Tracking</h2>
+            </div>
+            <div class="company-grid">
+                <div class="company-card">
+                    <h3>H&HS Company</h3>
+                    <div class="admin-stats">
+                        <div class="admin-category">
+                            <h4>Leave Management</h4>
+                            <div class="admin-item">
+                                <span class="admin-label">Average Leave Balance</span>
+                                <span class="admin-value">12.5 days</span>
+                            </div>
+                            <div class="admin-item">
+                                <span class="admin-label">Pending Leave Requests</span>
+                                <span class="admin-value">8</span>
+                            </div>
+                        </div>
+                        <div class="admin-category">
+                            <h4>Awards & Recognition</h4>
+                            <div class="admin-item">
+                                <span class="admin-label">NAMs Pending</span>
+                                <span class="admin-value">3</span>
+                            </div>
+                            <div class="admin-item">
+                                <span class="admin-label">Comendation Medals</span>
+                                <span class="admin-value">1</span>
+                            </div>
+                        </div>
+                        <div class="admin-category">
+                            <h4>Promotions</h4>
+                            <div class="admin-item">
+                                <span class="admin-label">Promotion Boards</span>
+                                <span class="admin-value">2</span>
+                            </div>
+                            <div class="admin-item">
+                                <span class="admin-label">Promotions This Month</span>
+                                <span class="admin-value">5</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="company-card">
+                    <h3>Alpha Company</h3>
+                    <div class="admin-stats">
+                        <div class="admin-category">
+                            <h4>Leave Management</h4>
+                            <div class="admin-item">
+                                <span class="admin-label">Average Leave Balance</span>
+                                <span class="admin-value">14.2 days</span>
+                            </div>
+                            <div class="admin-item">
+                                <span class="admin-label">Pending Leave Requests</span>
+                                <span class="admin-value">6</span>
+                            </div>
+                        </div>
+                        <div class="admin-category">
+                            <h4>Awards & Recognition</h4>
+                            <div class="admin-item">
+                                <span class="admin-label">NAMs Pending</span>
+                                <span class="admin-value">2</span>
+                            </div>
+                            <div class="admin-item">
+                                <span class="admin-label">Comendation Medals</span>
+                                <span class="admin-value">0</span>
+                            </div>
+                        </div>
+                        <div class="admin-category">
+                            <h4>Promotions</h4>
+                            <div class="admin-item">
+                                <span class="admin-label">Promotion Boards</span>
+                                <span class="admin-value">1</span>
+                            </div>
+                            <div class="admin-item">
+                                <span class="admin-label">Promotions This Month</span>
+                                <span class="admin-value">3</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="company-card">
+                    <h3>Bravo Company</h3>
+                    <div class="admin-stats">
+                        <div class="admin-category">
+                            <h4>Leave Management</h4>
+                            <div class="admin-item">
+                                <span class="admin-label">Average Leave Balance</span>
+                                <span class="admin-value">11.8 days</span>
+                            </div>
+                            <div class="admin-item">
+                                <span class="admin-label">Pending Leave Requests</span>
+                                <span class="admin-value">4</span>
+                            </div>
+                        </div>
+                        <div class="admin-category">
+                            <h4>Awards & Recognition</h4>
+                            <div class="admin-item">
+                                <span class="admin-label">NAMs Pending</span>
+                                <span class="admin-value">4</span>
+                            </div>
+                            <div class="admin-item">
+                                <span class="admin-label">Comendation Medals</span>
+                                <span class="admin-value">2</span>
+                            </div>
+                        </div>
+                        <div class="admin-category">
+                            <h4>Promotions</h4>
+                            <div class="admin-item">
+                                <span class="admin-label">Promotion Boards</span>
+                                <span class="admin-value">3</span>
+                            </div>
+                            <div class="admin-item">
+                                <span class="admin-label">Promotions This Month</span>
+                                <span class="admin-value">7</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="company-card">
+                    <h3>Charlie Company</h3>
+                    <div class="admin-stats">
+                        <div class="admin-category">
+                            <h4>Leave Management</h4>
+                            <div class="admin-item">
+                                <span class="admin-label">Average Leave Balance</span>
+                                <span class="admin-value">13.5 days</span>
+                            </div>
+                            <div class="admin-item">
+                                <span class="admin-label">Pending Leave Requests</span>
+                                <span class="admin-value">5</span>
+                            </div>
+                        </div>
+                        <div class="admin-category">
+                            <h4>Awards & Recognition</h4>
+                            <div class="admin-item">
+                                <span class="admin-label">NAMs Pending</span>
+                                <span class="admin-value">1</span>
+                            </div>
+                            <div class="admin-item">
+                                <span class="admin-label">Comendation Medals</span>
+                                <span class="admin-value">0</span>
+                            </div>
+                        </div>
+                        <div class="admin-category">
+                            <h4>Promotions</h4>
+                            <div class="admin-item">
+                                <span class="admin-label">Promotion Boards</span>
+                                <span class="admin-value">2</span>
+                            </div>
+                            <div class="admin-item">
+                                <span class="admin-label">Promotions This Month</span>
+                                <span class="admin-value">4</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Analytics Section -->
+        <section id="analytics" class="content-section">
+            <div class="section-header">
+                <h2>Analytics & Reporting</h2>
+            </div>
+            <div class="analytics-grid">
+                <div class="analytics-card">
+                    <h3>Readiness Trends</h3>
+                    <div class="trend-chart">
+                        <div class="trend-item">
+                            <span class="trend-label">Personnel Readiness</span>
+                            <div class="trend-bar">
+                                <div class="trend-fill" style="width: 87%"></div>
+                            </div>
+                            <span class="trend-value">87%</span>
+                        </div>
+                        <div class="trend-item">
+                            <span class="trend-label">Equipment Readiness</span>
+                            <div class="trend-bar">
+                                <div class="trend-fill" style="width: 92%"></div>
+                            </div>
+                            <span class="trend-value">92%</span>
+                        </div>
+                        <div class="trend-item">
+                            <span class="trend-label">Training Readiness</span>
+                            <div class="trend-bar">
+                                <div class="trend-fill" style="width: 78%"></div>
+                            </div>
+                            <span class="trend-value">78%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="analytics-card">
+                    <h3>Key Metrics</h3>
+                    <div class="metrics-grid">
+                        <div class="metric-item">
+                            <span class="metric-label">Deployment Readiness</span>
+                            <span class="metric-value">94.2%</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-label">Equipment Operational Rate</span>
+                            <span class="metric-value">89.5%</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-label">Training Completion</span>
+                            <span class="metric-value">82.3%</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-label">Personnel Availability</span>
+                            <span class="metric-value">87.4%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="analytics-card">
+                    <h3>Predictive Analytics</h3>
+                    <div class="prediction-list">
+                        <div class="prediction-item">
+                            <span class="prediction-label">Next Maintenance Due</span>
+                            <span class="prediction-value">15 FEB - H&HS JLTV</span>
+                        </div>
+                        <div class="prediction-item">
+                            <span class="prediction-label">Training Window</span>
+                            <span class="prediction-value">22 MAR - 05 APR</span>
+                        </div>
+                        <div class="prediction-item">
+                            <span class="prediction-label">Personnel Shortfall</span>
+                            <span class="prediction-value">Alpha Co - 3 MOS 7240</span>
+                        </div>
+                        <div class="prediction-item">
+                            <span class="prediction-label">Equipment Shortfall</span>
+                            <span class="prediction-value">Bravo Co - 1 MRQ System</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="analytics-card">
+                    <h3>Report Generation</h3>
+                    <div class="report-actions">
+                        <button class="btn btn-primary">
+                            <i class="fas fa-file-pdf"></i>
+                            Generate PDF Report
+                        </button>
+                        <button class="btn btn-secondary">
+                            <i class="fas fa-file-excel"></i>
+                            Export to Excel
+                        </button>
+                        <button class="btn btn-secondary">
+                            <i class="fas fa-chart-line"></i>
+                            Trend Analysis
+                        </button>
+                        <button class="btn btn-secondary">
+                            <i class="fas fa-download"></i>
+                            Download Data
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Marine Systems Section -->
+        <section id="marine-systems" class="content-section">
+            <div class="section-header">
+                <h2>Marine Corps Systems Integration</h2>
+            </div>
+            <div class="marine-systems-grid">
+                <div class="system-card">
+                    <div class="system-header">
+                        <h3>MSHARP</h3>
+                        <span class="system-status connected">Connected</span>
+                    </div>
+                    <div class="system-description">
+                        <p>Marine Corps Safety and Health Assessment and Readiness Program</p>
+                    </div>
+                    <div class="system-stats">
+                        <div class="system-stat">
+                            <span class="stat-label">Last Sync</span>
+                            <span class="stat-value">2 hours ago</span>
+                        </div>
+                        <div class="system-stat">
+                            <span class="stat-label">Data Points</span>
+                            <span class="stat-value">1,247</span>
+                        </div>
+                        <div class="system-stat">
+                            <span class="stat-label">Health Score</span>
+                            <span class="stat-value">92%</span>
+                        </div>
+                    </div>
+                    <div class="system-actions">
+                        <button class="btn btn-primary system-btn">
+                            <i class="fas fa-sync"></i>
+                            Sync Now
+                        </button>
+                        <button class="btn btn-secondary system-btn">
+                            <i class="fas fa-external-link-alt"></i>
+                            Open MSHARP
+                        </button>
+                    </div>
+                </div>
+
+                <div class="system-card">
+                    <div class="system-header">
+                        <h3>MCTIMS</h3>
+                        <span class="system-status connected">Connected</span>
+                    </div>
+                    <div class="system-description">
+                        <p>Marine Corps Training Information Management System</p>
+                    </div>
+                    <div class="system-stats">
+                        <div class="system-stat">
+                            <span class="stat-label">Last Sync</span>
+                            <span class="stat-value">4 hours ago</span>
+                        </div>
+                        <div class="system-stat">
+                            <span class="stat-label">Training Records</span>
+                            <span class="stat-value">856</span>
+                        </div>
+                        <div class="system-stat">
+                            <span class="stat-label">Completion Rate</span>
+                            <span class="stat-value">87%</span>
+                        </div>
+                    </div>
+                    <div class="system-actions">
+                        <button class="btn btn-primary system-btn">
+                            <i class="fas fa-sync"></i>
+                            Sync Now
+                        </button>
+                        <button class="btn btn-secondary system-btn">
+                            <i class="fas fa-external-link-alt"></i>
+                            Open MCTIMS
+                        </button>
+                    </div>
+                </div>
+
+                <div class="system-card">
+                    <div class="system-header">
+                        <h3>MOL</h3>
+                        <span class="system-status connecting">Connecting...</span>
+                    </div>
+                    <div class="system-description">
+                        <p>Marine Online - Personnel and Administrative Management</p>
+                    </div>
+                    <div class="system-stats">
+                        <div class="system-stat">
+                            <span class="stat-label">Last Sync</span>
+                            <span class="stat-value">Never</span>
+                        </div>
+                        <div class="system-stat">
+                            <span class="stat-label">Personnel Records</span>
+                            <span class="stat-value">0</span>
+                        </div>
+                        <div class="system-stat">
+                            <span class="stat-label">Status</span>
+                            <span class="stat-value">Pending</span>
+                        </div>
+                    </div>
+                    <div class="system-actions">
+                        <button class="btn btn-primary system-btn">
+                            <i class="fas fa-plug"></i>
+                            Connect
+                        </button>
+                        <button class="btn btn-secondary system-btn">
+                            <i class="fas fa-external-link-alt"></i>
+                            Open MOL
+                        </button>
+                    </div>
+                </div>
+
+                <div class="system-card">
+                    <div class="system-header">
+                        <h3>MarineNet</h3>
+                        <span class="system-status disconnected">Disconnected</span>
+                    </div>
+                    <div class="system-description">
+                        <p>Marine Corps Training and Education Portal</p>
+                    </div>
+                    <div class="system-stats">
+                        <div class="system-stat">
+                            <span class="stat-label">Last Sync</span>
+                            <span class="stat-value">Never</span>
+                        </div>
+                        <div class="system-stat">
+                            <span class="stat-label">Course Completions</span>
+                            <span class="stat-value">0</span>
+                        </div>
+                        <div class="system-stat">
+                            <span class="stat-label">Status</span>
+                            <span class="stat-value">Offline</span>
+                        </div>
+                    </div>
+                    <div class="system-actions">
+                        <button class="btn btn-primary system-btn">
+                            <i class="fas fa-plug"></i>
+                            Connect
+                        </button>
+                        <button class="btn btn-secondary system-btn">
+                            <i class="fas fa-external-link-alt"></i>
+                            Open MarineNet
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- System Configuration -->
+            <div class="system-config">
+                <h3>System Configuration</h3>
+                <div class="config-grid">
+                    <div class="config-item">
+                        <label>Auto-Sync Interval</label>
+                        <select class="form-select">
+                            <option value="15">15 minutes</option>
+                            <option value="30" selected>30 minutes</option>
+                            <option value="60">1 hour</option>
+                            <option value="240">4 hours</option>
+                            <option value="1440">Daily</option>
+                        </select>
+                    </div>
+                    <div class="config-item">
+                        <label>Data Retention</label>
+                        <select class="form-select">
+                            <option value="30">30 days</option>
+                            <option value="90" selected>90 days</option>
+                            <option value="180">180 days</option>
+                            <option value="365">1 year</option>
+                        </select>
+                    </div>
+                    <div class="config-item">
+                        <label>Sync Priority</label>
+                        <select class="form-select">
+                            <option value="high">High Priority</option>
+                            <option value="medium" selected>Medium Priority</option>
+                            <option value="low">Low Priority</option>
+                        </select>
+                    </div>
+                    <div class="config-item">
+                        <label>Error Notifications</label>
+                        <select class="form-select">
+                            <option value="immediate">Immediate</option>
+                            <option value="hourly" selected>Hourly</option>
+                            <option value="daily">Daily</option>
+                            <option value="none">None</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="config-actions">
+                    <button class="btn btn-primary">
+                        <i class="fas fa-save"></i>
+                        Save Configuration
+                    </button>
+                    <button class="btn btn-secondary">
+                        <i class="fas fa-download"></i>
+                        Export Logs
+                    </button>
+                </div>
+            </div>
+
+            <!-- Sync History -->
+            <div class="sync-history">
+                <h3>Sync History</h3>
+                <div class="history-list">
+                    <div class="history-item">
+                        <div class="history-system">MSHARP</div>
+                        <div class="history-status success">Success</div>
+                        <div class="history-time">2 hours ago</div>
+                        <div class="history-details">1,247 records synced</div>
+                    </div>
+                    <div class="history-item">
+                        <div class="history-system">MCTIMS</div>
+                        <div class="history-status success">Success</div>
+                        <div class="history-time">4 hours ago</div>
+                        <div class="history-details">856 training records synced</div>
+                    </div>
+                    <div class="history-item">
+                        <div class="history-system">MOL</div>
+                        <div class="history-status error">Failed</div>
+                        <div class="history-time">6 hours ago</div>
+                        <div class="history-details">Authentication error</div>
+                    </div>
+                    <div class="history-item">
+                        <div class="history-system">MarineNet</div>
+                        <div class="history-status pending">Pending</div>
+                        <div class="history-time">8 hours ago</div>
+                        <div class="history-details">Connection timeout</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Data Entry Section -->
+        <section id="data-entry" class="content-section">
+            <div class="section-header">
+                <h2>Data Entry</h2>
+            </div>
+            <div class="data-entry-form">
+                <div class="form-group">
+                    <label for="company-select">Select Company</label>
+                    <select id="company-select" class="form-select">
+                        <option value="">Choose Company</option>
+                        <option value="hhs">H&HS Company</option>
+                        <option value="alpha">Alpha Company</option>
+                        <option value="bravo">Bravo Company</option>
+                        <option value="charlie">Charlie Company</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="section-select">Select Section</label>
+                    <select id="section-select" class="form-select">
+                        <option value="">Choose Section</option>
+                        <option value="personnel">Personnel</option>
+                        <option value="training">Training</option>
+                        <option value="teep">TEEP</option>
+                        <option value="equipment">Equipment</option>
+                        <option value="admin">Admin</option>
+                    </select>
+                </div>
+                <div id="dynamic-form" class="dynamic-form">
+                    <!-- Dynamic form fields will be populated here -->
+                </div>
+                <button class="btn btn-primary" id="update-data">Update Data</button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Briefing Mode Overlay -->
+    <div id="briefing-overlay" class="briefing-overlay">
+        <div class="briefing-content">
+            <div class="briefing-header">
+                <h2>MASS-3 Command Briefing</h2>
+                <div class="briefing-controls">
+                    <span id="slide-counter">1 / 7</span>
+                    <button class="btn btn-secondary" id="exit-briefing">Exit Briefing</button>
+                </div>
+            </div>
+            <div class="briefing-slides">
+                <!-- Briefing slides will be populated here -->
+            </div>
+            <div class="briefing-navigation">
+                <button class="btn btn-primary" id="prev-slide">
+                    <i class="fas fa-chevron-left"></i>
+                    Previous
+                </button>
+                <button class="btn btn-primary" id="next-slide">
+                    Next
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Upload Modal -->
+    <div id="upload-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Upload Data</h3>
+                <button class="modal-close" id="close-upload">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="upload-area" id="upload-area">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <h4>Drag & Drop Files Here</h4>
+                    <p>Supported formats: Excel, Word, PowerPoint, PDF</p>
+                    <input type="file" id="file-input" multiple accept=".xlsx,.xls,.docx,.doc,.pptx,.ppt,.pdf,.csv" style="display: none;">
+                </div>
+                <div class="upload-config" id="upload-config" style="display: none;">
+                    <h4>Document Configuration</h4>
+                    <div class="config-grid">
+                        <div class="form-group">
+                            <label for="upload-company">Company</label>
+                            <select id="upload-company" class="form-select">
+                                <option value="">Select Company</option>
+                                <option value="hhs">H&HS Company</option>
+                                <option value="alpha">Alpha Company</option>
+                                <option value="bravo">Bravo Company</option>
+                                <option value="charlie">Charlie Company</option>
+                                <option value="unit">Unit Level</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="upload-section">Section</label>
+                            <select id="upload-section" class="form-select">
+                                <option value="">Select Section</option>
+                                <option value="personnel">Personnel</option>
+                                <option value="training">Training</option>
+                                <option value="teep">TEEP</option>
+                                <option value="overview">Overview</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="upload-document-type">Document Type</label>
+                            <select id="upload-document-type" class="form-select">
+                                <option value="">Select Document Type</option>
+                                <option value="roster">Personnel Roster</option>
+                                <option value="fitness">Fitness Report</option>
+                                <option value="training">Training Schedule</option>
+                                <option value="teep">TEEP Document</option>
+                                <option value="briefing">Briefing Slides</option>
+                                <option value="report">Unit Report</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="upload-notes">Notes (Optional)</label>
+                            <textarea id="upload-notes" class="form-input" placeholder="Add any additional notes about the document..."></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="uploaded-files" id="uploaded-files" style="display: none;">
+                    <h4>Uploaded Files</h4>
+                    <div class="files-list" id="files-list"></div>
+                </div>
+                <div class="upload-actions" id="upload-actions" style="display: none;">
+                    <button class="btn btn-primary" id="analyze-files">
+                        <i class="fas fa-brain"></i>
+                        Analyze Documents
+                    </button>
+                    <button class="btn btn-secondary" id="clear-uploads">
+                        <i class="fas fa-trash"></i>
+                        Clear All
+                    </button>
+                </div>
+                <div class="analysis-status" id="analysis-status" style="display: none;">
+                    <div class="status-indicator">
+                        <i class="fas fa-cog fa-spin"></i>
+                        <span>AI Analysis in Progress...</span>
+                        <div class="analysis-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="progress-fill"></div>
+                            </div>
+                            <span class="progress-text" id="progress-text">Processing...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+    <!-- Developer Credit -->
+    <footer class="developer-credit">
+        <div class="credit-content">
+            <span class="credit-text">Designed & Developed by</span>
+            <span class="developer-name">SSgt Christopher "<span class="callsign">ReBooT</span>" Wood</span>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 

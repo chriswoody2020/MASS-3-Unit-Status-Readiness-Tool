@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Upload & AI Analysis - Marine Corps Unit Readiness Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @font-face {
+            font-family: 'COLOSSALIS';
+            src: url('data:font/woff2;base64,d09GMgABAAAAAA...') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+    </style>
+</head>
+<body>
+    <header class="usmc-header">
+        <div class="header-content">
+            <div class="usmc-logo">
+                <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" class="eagle-globe-anchor">
+                    <!-- Eagle -->
+                    <path d="M40 5L50 20H30L40 5Z" fill="#FFFFFF"/>
+                    <path d="M40 20L45 25H35L40 20Z" fill="#FFFFFF"/>
+                    
+                    <!-- Globe -->
+                    <circle cx="40" cy="40" r="15" fill="#FFFFFF"/>
+                    <circle cx="40" cy="40" r="12" fill="none" stroke="#FFFFFF" stroke-width="1"/>
+                    <circle cx="40" cy="40" r="9" fill="none" stroke="#FFFFFF" stroke-width="0.5"/>
+                    
+                    <!-- Anchor -->
+                    <path d="M40 25L40 55" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
+                    <path d="M25 45L55 45" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
+                    <path d="M30 40L30 50" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M50 40L50 50" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+                    
+                    <!-- Anchor Ring -->
+                    <circle cx="40" cy="35" r="3" fill="none" stroke="#FFFFFF" stroke-width="2"/>
+                    
+                    <!-- Globe Lines -->
+                    <path d="M25 40H55" stroke="#FFFFFF" stroke-width="0.5" opacity="0.7"/>
+                    <path d="M40 25V55" stroke="#FFFFFF" stroke-width="0.5" opacity="0.7"/>
+                    
+                    <!-- Eagle Details -->
+                    <path d="M35 15L45 15" stroke="#FFFFFF" stroke-width="1" stroke-linecap="round"/>
+                    <path d="M38 12L42 12" stroke="#FFFFFF" stroke-width="1" stroke-linecap="round"/>
+                </svg>
+            </div>
+            <div class="header-text">
+                <h1>DATA UPLOAD & AI ANALYSIS</h1>
+                <p>United States Marine Corps</p>
+            </div>
+            <div class="header-date">
+                <span id="current-date"></span>
+            </div>
+        </div>
+        <div class="header-controls">
+            <a href="index.html" class="usmc-btn briefing-btn">
+                <i class="fas fa-arrow-left"></i> BACK TO DASHBOARD
+            </a>
+        </div>
+    </header>
+
+    <nav class="usmc-nav">
+        <ul>
+            <li><a href="index.html" class="nav-link">Dashboard</a></li>
+            <li><a href="upload.html" class="nav-link active">Upload Data</a></li>
+            <li><a href="#analysis" class="nav-link">Analysis</a></li>
+            <li><a href="#history" class="nav-link">Upload History</a></li>
+        </ul>
+    </nav>
+
+    <main class="dashboard-container">
+        <!-- Upload Section -->
+        <section id="upload" class="content-section active">
+            <div class="section-header">
+                <h2><i class="fas fa-cloud-upload-alt"></i> Data Upload & AI Analysis</h2>
+                <div class="section-actions">
+                    <button class="usmc-btn primary" id="analyze-btn" disabled>
+                        <i class="fas fa-brain"></i> Analyze Data
+                    </button>
+                    <button class="usmc-btn secondary" id="clear-btn">
+                        <i class="fas fa-trash"></i> Clear All
+                    </button>
+                </div>
+            </div>
+            
+            <div class="upload-container">
+                <div class="upload-area" id="upload-area">
+                    <div class="upload-content">
+                        <i class="fas fa-cloud-upload-alt upload-icon"></i>
+                        <h3>DRAG & DROP FILES HERE</h3>
+                        <p>Upload screenshots, PDFs, or Excel files for AI analysis</p>
+                        <div class="file-types">
+                            <span class="file-type">📷 Screenshots</span>
+                            <span class="file-type">📄 PDFs</span>
+                            <span class="file-type">📊 Excel</span>
+                        </div>
+                        <button class="usmc-btn primary" id="browse-btn">
+                            <i class="fas fa-folder-open"></i> Browse Files
+                        </button>
+                        <input type="file" id="file-input" multiple accept=".jpg,.jpeg,.png,.pdf,.xlsx,.xls" style="display: none;">
+                    </div>
+                </div>
+                
+                <div class="uploaded-files" id="uploaded-files">
+                    <h4>Uploaded Files</h4>
+                    <div class="files-list" id="files-list">
+                        <!-- Files will be added here dynamically -->
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Analysis Results Section -->
+        <section id="analysis" class="content-section">
+            <div class="section-header">
+                <h2><i class="fas fa-chart-bar"></i> AI Analysis Results</h2>
+                <div class="section-actions">
+                    <button class="usmc-btn primary" id="update-dashboard-btn">
+                        <i class="fas fa-sync"></i> Update Dashboard
+                    </button>
+                    <button class="usmc-btn secondary" id="export-analysis-btn">
+                        <i class="fas fa-download"></i> Export Analysis
+                    </button>
+                </div>
+            </div>
+            
+            <div class="analysis-container">
+                <div class="analysis-status">
+                    <div class="status-card">
+                        <h4>Analysis Status</h4>
+                        <div class="status-indicator" id="analysis-status">
+                            <span class="status-text">Ready for Analysis</span>
+                            <div class="progress-bar">
+                                <div class="progress" id="analysis-progress" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="analysis-results" id="analysis-results">
+                    <div class="result-card">
+                        <h4>Extracted Data</h4>
+                        <div class="data-preview" id="data-preview">
+                            <p>Upload files to begin analysis...</p>
+                        </div>
+                    </div>
+                    
+                    <div class="result-card">
+                        <h4>AI Insights</h4>
+                        <div class="insights" id="ai-insights">
+                            <p>AI analysis will appear here...</p>
+                        </div>
+                    </div>
+                    
+                    <div class="result-card">
+                        <h4>Dashboard Updates</h4>
+                        <div class="updates" id="dashboard-updates">
+                            <p>Recommended dashboard updates will appear here...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Upload History Section -->
+        <section id="history" class="content-section">
+            <div class="section-header">
+                <h2><i class="fas fa-history"></i> Upload History</h2>
+                <div class="section-actions">
+                    <button class="usmc-btn primary">
+                        <i class="fas fa-refresh"></i> Refresh
+                    </button>
+                    <button class="usmc-btn secondary">
+                        <i class="fas fa-download"></i> Export History
+                    </button>
+                </div>
+            </div>
+            
+            <div class="history-container">
+                <div class="history-list" id="history-list">
+                    <div class="history-item">
+                        <div class="history-info">
+                            <h4>Personnel Report - May 2024</h4>
+                            <span class="history-date">May 15, 2024 - 14:30</span>
+                            <span class="history-status success">Successfully Analyzed</span>
+                        </div>
+                        <div class="history-actions">
+                            <button class="usmc-btn secondary small">
+                                <i class="fas fa-eye"></i> View
+                            </button>
+                            <button class="usmc-btn secondary small">
+                                <i class="fas fa-download"></i> Download
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="history-item">
+                        <div class="history-info">
+                            <h4>Equipment Status - April 2024</h4>
+                            <span class="history-date">April 28, 2024 - 09:15</span>
+                            <span class="history-status success">Successfully Analyzed</span>
+                        </div>
+                        <div class="history-actions">
+                            <button class="usmc-btn secondary small">
+                                <i class="fas fa-eye"></i> View
+                            </button>
+                            <button class="usmc-btn secondary small">
+                                <i class="fas fa-download"></i> Download
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="usmc-footer">
+        <div class="footer-content">
+            <p>&copy; 2024 United States Marine Corps. All rights reserved.</p>
+            <p>For official use only - FOUO</p>
+        </div>
+    </footer>
+
+    <script src="upload.js"></script>
+</body>
+</html> 
